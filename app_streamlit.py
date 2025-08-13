@@ -3,14 +3,21 @@ import pickle
 import pandas as pd
 import numpy as np
 
-with open("full_model.pkl", "rb") as f:
-    data = pickle.load(f)
+# Load model dan encoder
+with open("xgb_model_fixed.pkl", "rb") as f:
+    model = pickle.load(f)
 
-model = data["model"]
-oh_encoder = data["oh_encoder"]
-scaler = data["scaler"]
-object_cols = data["object_cols"]
-X_columns = data["X_columns"]
+with open("oh_encoder_fixed.pkl", "rb") as f:
+    oh_encoder = pickle.load(f)
+
+with open("scaler_fixed.pkl", "rb") as f:
+    scaler = pickle.load(f)
+
+with open("object_cols_fixed.pkl", "rb") as f:
+    object_cols = pickle.load(f)
+
+with open("X_train_columns_fixed.pkl", "rb") as f:
+    X_columns = pickle.load(f)
 
 # Fitur numerik
 numerical_features = ['lat', 'long', 'bedrooms', 'bathrooms', 'land_size_m2', 'building_size_m2',
